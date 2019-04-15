@@ -27,12 +27,14 @@
 #define HOST_PORT   (8090)
 
 SoftwareSerial mySerial(3, 2); /* RX:D3, TX:D2 */
-ESP8266 wifi(mySerial);
+ESP8266 wifi;
 
 void setup(void)
 {
     Serial.begin(9600);
     Serial.print("setup begin\r\n");
+
+    wifi.begin(mySerial, 115200);
     
     Serial.print("FW Version:");
     Serial.println(wifi.getVersion().c_str());

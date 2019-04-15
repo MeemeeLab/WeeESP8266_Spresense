@@ -41,6 +41,10 @@
         }\
     } while(0)
 
+ESP8266::ESP8266(void)
+{
+}
+
 #ifdef ESP8266_USE_SOFTWARE_SERIAL
 ESP8266::ESP8266(SoftwareSerial &uart, uint32_t baud): m_puart(&uart)
 {
@@ -50,6 +54,22 @@ ESP8266::ESP8266(SoftwareSerial &uart, uint32_t baud): m_puart(&uart)
 #else
 ESP8266::ESP8266(HardwareSerial &uart, uint32_t baud): m_puart(&uart)
 {
+    m_puart->begin(baud);
+    rx_empty();
+}
+#endif
+
+#ifdef ESP8266_USE_SOFTWARE_SERIAL
+void ESP8266::begin(SoftwareSerial &uart, uint32_t baud)
+{
+    m_puart = &uart;
+    m_puart->begin(baud);
+    rx_empty();
+}
+#else
+void ESP8266::begin(HardwareSerial &uart, uint32_t baud)
+{
+    m_puart = &uart;
     m_puart->begin(baud);
     rx_empty();
 }
@@ -486,7 +506,7 @@ bool ESP8266::eATGMR(String &version)
 {
     rx_empty();
     m_puart->println("AT+GMR");
-    return recvFindAndFilter("OK", "\r\r\n", "\r\n\r\nOK", version); 
+    return recvFindAndFilter("OK", "\r\r\n", "\r\nOK", version); 
 }
 
 bool ESP8266::qATCWMODE(uint8_t *mode) 

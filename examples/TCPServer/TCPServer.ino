@@ -24,12 +24,14 @@
 #define SSID        "ITEAD"
 #define PASSWORD    "12345678"
 
-ESP8266 wifi(Serial1);
+ESP8266 wifi;
 
 void setup(void)
 {
     Serial.begin(9600);
     Serial.print("setup begin\r\n");
+
+    wifi.begin(Serial2, 115200);
     
     Serial.print("FW Version:");
     Serial.println(wifi.getVersion().c_str());

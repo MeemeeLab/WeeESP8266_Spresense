@@ -38,6 +38,12 @@
 class ESP8266 {
  public:
 
+    /*
+     * Constuctor. 
+     *
+     */
+    ESP8266(void);
+
 #ifdef ESP8266_USE_SOFTWARE_SERIAL
     /*
      * Constuctor. 
@@ -58,6 +64,28 @@ class ESP8266 {
      * @warning parameter baud depends on the AT firmware. 9600 is an common value. 
      */
     ESP8266(HardwareSerial &uart, uint32_t baud = 9600);
+#endif
+
+#ifdef ESP8266_USE_SOFTWARE_SERIAL
+    /*
+     * Initialize the library.
+     *
+     * @param uart - an reference of SoftwareSerial object. 
+     * @param baud - the buad rate to communicate with ESP8266(default:9600). 
+     *
+     * @warning parameter baud depends on the AT firmware. 9600 is an common value. 
+     */
+    void begin(SoftwareSerial &uart, uint32_t baud = 9600);
+#else /* HardwareSerial */
+    /*
+     * Initialize the library. 
+     *
+     * @param uart - an reference of HardwareSerial object. 
+     * @param baud - the buad rate to communicate with ESP8266(default:9600). 
+     *
+     * @warning parameter baud depends on the AT firmware. 9600 is an common value. 
+     */
+    void begin(HardwareSerial &uart, uint32_t baud = 9600);
 #endif
     
     
