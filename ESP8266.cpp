@@ -82,7 +82,7 @@ bool ESP8266::kick(void)
 
 bool ESP8266::restart(void)
 {
-    unsigned long start;
+    unsigned long long start;
     if (eATRST()) {
         delay(2000);
         start = millis();
@@ -329,7 +329,7 @@ uint32_t ESP8266::recvPkg(uint8_t *buffer, uint32_t buffer_size, uint32_t *data_
     int8_t id = -1;
     bool has_data = false;
     uint32_t ret;
-    unsigned long start;
+    unsigned long long start;
     uint32_t i;
     
     if (buffer == NULL) {
@@ -405,7 +405,7 @@ String ESP8266::recvString(String target, uint32_t timeout)
 {
     String data;
     char a;
-    unsigned long start = millis();
+    unsigned long long start = millis();
     while (millis() - start < timeout) {
         while(m_puart->available() > 0) {
             a = m_puart->read();
@@ -423,7 +423,7 @@ String ESP8266::recvString(String target1, String target2, uint32_t timeout)
 {
     String data;
     char a;
-    unsigned long start = millis();
+    unsigned long long start = millis();
     while (millis() - start < timeout) {
         while(m_puart->available() > 0) {
             a = m_puart->read();
@@ -443,7 +443,7 @@ String ESP8266::recvString(String target1, String target2, String target3, uint3
 {
     String data;
     char a;
-    unsigned long start = millis();
+    unsigned long long start = millis();
     while (millis() - start < timeout) {
         while(m_puart->available() > 0) {
             a = m_puart->read();
