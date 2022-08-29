@@ -1,18 +1,20 @@
 @mainpage
 
-# WeeESP8266
+# WeeESP8266 For Spresense
 
 An ESP8266 library for Arduino providing an easy-to-use way to manipulate ESP8266.
 
+This fork is optimized for use for spresense board from Sony.
+
 # Source 
 
-Source can be download at <https://github.com/itead/ITEADLIB_Arduino_WeeESP8266>.
+Source can be download at <https://github.com/MeemeeLab/WeeESP8266_Spresense>.
 
 You can clone it by:
 
-    git clone https://github.com/itead/ITEADLIB_Arduino_WeeESP8266.git
+    git clone https://github.com/MeemeeLab/WeeESP8266_Spresense.git
 
-# Documentation
+## Documentation (Currently there's no docs for WeeESP8266 Spresense; Below is docs for base WeeESP8266 of this fork)
 
 Online API documentation can be reached at <http://docs.iteadstudio.com/ITEADLIB_Arduino_WeeESP8266/index.html>.
 
